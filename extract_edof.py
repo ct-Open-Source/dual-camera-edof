@@ -115,7 +115,8 @@ def main(fname):
 	if  data.find(bytes([0x00, 0x65, 0x64, 0x6f, 0x66, 0x00])) < 0:
 		print("No EDOF header found")
 		return False
-
+	idx_hack = data.find(bytes([0x00, 0x65, 0x64, 0x6f, 0x66, 0x00])) - 3
+	return extract_edof(data, idx_hack, fname)
 	idx = 0
 	segment_index = 0
 	while True:
